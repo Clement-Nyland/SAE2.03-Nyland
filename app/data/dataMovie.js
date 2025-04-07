@@ -1,16 +1,8 @@
-let HOST_URL = "http://mmi.unilim.fr/~nyland2";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
+let HOST_URL = "http://mmi.unilim.fr/~nyland2/SAE2.03-Nyland";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
 let DataMovie = {};
 
- /**
-     
-Fetches data from the server based on the specified day.*
-@param {string} day - The day parameter to be sent to the server.
-@returns The response from the server.
-DataMenu.request permet de récupérer des données depuis le serveur.
-Elle prend en paramètre un jour (lundi mardi...) de la semaine et
-renvoie les données contenues dans la réponse du serveur (data).*/
-DataMenu.requestMovies = async function(day){
+DataMovie.getMovie = async function(){
     // fetch permet d'envoyer une requête HTTP à l'URL spécifiée. 
     // L'URL est construite en concaténant HOST_URL à "/server/script.php?direction=" et la valeur de la variable dir. 
     // L'URL finale dépend de la valeur de HOST_URL et de dir.
@@ -24,4 +16,4 @@ DataMenu.requestMovies = async function(day){
 }
 
 
-export {DataMovie};
+export { DataMovie };
