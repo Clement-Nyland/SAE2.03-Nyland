@@ -55,15 +55,17 @@ if ( isset($_REQUEST['todo']) ){
     case "readmovies";
       $data = readMoviesController();
       break;
-      
+    
+    case 'addMovie': // si la valeur de 'todo' est 'addMovie', on appelle la fonction addController()
+      $data = addController();
+      break;
+
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée
       echo json_encode('[error] Unknown todo value');
       http_response_code(400); // 400 == "Bad request"
       exit();
 
-      case 'addMovie': // si la valeur de 'todo' est 'addMovie', on appelle la fonction addController()
-        $data = addController();
-      break;
+    
   }
 
   /**
@@ -77,7 +79,7 @@ if ( isset($_REQUEST['todo']) ){
    */
   if ($data===false){
     echo json_encode('[error] Controller returns false');
-    http_response_code(500); // 500 == "Internal error"
+    //http_response_code(500); // 500 == "Internal error"
     exit();
   }
 

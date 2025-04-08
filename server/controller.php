@@ -49,6 +49,7 @@ function addController(){
     }
     // Mise à jour du menu à l'aide de la fonction updateMenu décrite dans model.php
     $ok = addMovie($titre, $realisateur, $annee, $duree, $desc, $categorie, $image, $url, $age);
+    var_dump($ok);
     // $ok est le nombre de ligne affecté par l'opération de mise à jour dans la BDD (voir model.php)
     if ($ok!=0){
       return "Le film $titre a été ajouté avec succès !";

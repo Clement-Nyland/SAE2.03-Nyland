@@ -41,7 +41,7 @@
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.9),
-    rgba(0, 0, 0, 0.4),
+    rgba(0, 132, 255, 0.4),
     transparent
   );
   color: var(--color-white);
