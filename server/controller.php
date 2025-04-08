@@ -24,3 +24,36 @@ function readMoviesController(){
     $movies = getAllMovies();
     return $movies;
 }
+
+function addController(){
+    /* Lecture des données de formulaire
+      On ne vérifie pas si les données sont valides, on suppose (faudra pas toujours...) que le client les a déjà
+      vérifiées avant de les envoyer 
+    */
+
+
+    // Récupération des paramètres de la requête
+    $titre = $_REQUEST['titre'] ?? null;
+    $realisateur = $_REQUEST['realisateur'] ?? null;
+    $annee = $_REQUEST['annee'] ?? null;
+    $duree = $_REQUEST['duree'] ?? null;
+    $desc = $_REQUEST['desc'] ?? null;
+    $categorie = $_REQUEST['categorie'] ?? null;
+    $image = $_REQUEST['image'] ?? null;
+    $url = $_REQUEST['url'] ?? null;
+    $age = $_REQUEST['age'] ?? null;
+
+    // Validation: Check if any parameter is empty
+    if (empty($titre) || empty($realisateur) || empty($annee) || empty($duree) || empty($desc) || empty($categorie) || empty($image) || empty($url) || empty($age)) {
+        return "Erreur : Tous les champs doivent être remplis.";
+    }
+    // Mise à jour du menu à l'aide de la fonction updateMenu décrite dans model.php
+    $ok = addMovie($titre, $realisateur, $annee, $duree, $desc, $categorie, $image, $url, $age);
+    // $ok est le nombre de ligne affecté par l'opération de mise à jour dans la BDD (voir model.php)
+    if ($ok!=0){
+      return "Le film $titre a été ajouté avec succès !";
+    } 
+    else{
+      return "Erreur lors de l'ajout du film $titre !";
+    }
+  }

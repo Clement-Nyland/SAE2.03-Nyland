@@ -60,6 +60,10 @@ if ( isset($_REQUEST['todo']) ){
       echo json_encode('[error] Unknown todo value');
       http_response_code(400); // 400 == "Bad request"
       exit();
+
+      case 'addMovie': // si la valeur de 'todo' est 'addMovie', on appelle la fonction addController()
+        $data = addController();
+      break;
   }
 
   /**
