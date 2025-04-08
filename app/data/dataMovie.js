@@ -1,4 +1,4 @@
-let HOST_URL = "http://mmi.unilim.fr/~nyland2/SAE2.03-Nyland";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
+let HOST_URL = "https://mmi.unilim.fr/~nyland2/SAE2.03-Nyland";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
 let DataMovie = {};
 
