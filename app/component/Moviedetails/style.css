@@ -1,94 +1,75 @@
-.infos {
-  display: flex;
-  justify-content: center;
-  padding: 4rem 1.5rem;
+
+.movie-detail__paragraphe{
+  margin-bottom: 0.3rem;
 }
 
-.details {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-gray-dark);
-  color: var(--color-white);
-  font-family: var(--ff-sans);
-  border-radius: 1rem;
-  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+.movie-detail {
   max-width: 1200px;
   margin: 4rem auto;
+  padding: 2rem;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--ff-sans);
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* === GRID LAYOUT PRINCIPAL === */
+.movie-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
-/* === IMAGE === */
-.details__image {
+.movie-detail__poster {
   width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
   border-radius: 0.75rem;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
 }
 
-/* === CONTENU === */
-.details__content {
+/* === INFOS === */
+.movie-detail__info {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-/* === TITRE === */
-.details__title {
-  font-size: 2.5rem;
+.movie-detail__title {
+  font-size: 2.2rem;
   font-weight: bold;
-  margin: 0;
+  margin: 0rem;
 }
 
-/* === DESCRIPTION === */
-.details__desc {
-  font-size: 1.1rem;
+.movie-detail__synopsis {
+  font-size: 0.8rem;
   line-height: 1.6;
   text-align: justify;
   color: var(--color-gray-light);
+  padding-right: 2rem;
 }
 
-/* === INFOS === */
-.details__realisateur,
-.details__annee,
-.details__duree,
-.details__categorie,
-.details__age {
-  font-size: 1rem;
-  color: var(--color-gray-light);
-}
 
-/* === TRAILER === */
-.details__trailer {
+
+.movie-detail__iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 0.75rem;
   border: none;
-  background-color: var(--color-black);
+  border-radius: 0.75rem;
 }
 
-/* === LAYOUT DESKTOP === */
+/* === RESPONSIVE DESKTOP === */
 @media (min-width: 1024px) {
-  .details {
-    flex-direction: row;
-    gap: 3rem;
-    align-items: flex-start;
+  .movie-detail__grid {
+    grid-template-columns: 40% 60%;
+    align-items: start;
   }
 
-  .details__image {
-    width: 40%;
-  }
-
-  .details__content {
-    width: 60%;
-  }
-
-  .details__title {
+  .movie-detail__title {
     font-size: 2.8rem;
-  }
-
-  .details__trailer {
-    margin-top: 2rem;
   }
 }
