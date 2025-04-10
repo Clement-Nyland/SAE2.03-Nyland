@@ -10,7 +10,7 @@
   <body>
 
     <header id="header"></header>
-
+    <section class="infos" id="infos"></section>
     <section class="cards" id="content"></section>
 
     <script type="module">
@@ -18,6 +18,8 @@
 
       import { Movie } from "./component/Movie/script.js";
       import { DataMovie } from "./data/dataMovie.js";
+
+      import { Moviedetails } from "./component/Moviedetails/script.js";
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -30,8 +32,14 @@
         );
       };
 
+      C.handlerDetail = async function (movieId) {
+        let movieData = await DataMovie.requestMovieDetails(movieId); // Récupère les détails du film
+        V.renderMoviedetails(movieData); // Affiche les détails du film
+      };
+
       C.start = async function () {
         V.renderNavBar("C.handlerAbout()");
+        await V.renderNavBar("C.handlerMovies()");
 
         let movies = await DataMovie.getMovie();
         if (movies.length == 0) [
@@ -66,6 +74,11 @@
           let cardHTML = Movie.format(movie);
           content.innerHTML += cardHTML
         });
+      };
+
+      V.renderMoviedetails = function (movieData) {
+        let content = document.querySelector("#content");
+        content.innerHTML = Moviedetails.format(movieData);
       };
 
       C.start(); // Démarre l'application

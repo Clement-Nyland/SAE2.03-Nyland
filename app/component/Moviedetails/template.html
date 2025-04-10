@@ -1,0 +1,20 @@
+<div class="movie-detail">
+  <div class="movie-detail__grid">
+    <img class="movie-detail__poster" src="https://mmi.unilim.fr/~nyland2/SAE2.03-Nyland/server/images/{{image}}" alt="Affiche du film" />
+
+    <div class="movie-detail__info">
+      <h1 class="movie-detail__title">{{name}}</h1>
+      <p class="movie-detail__synopsis">{{desc}}</p>
+      <p class="movie-detail__paragraphe"><strong>Réalisateur :</strong> <span>{{realisateur}}</span></p>
+      <p class="movie-detail__paragraphe"><strong>Année :</strong> <span>{{annee}}</span></p>
+      <p class="movie-detail__paragraphe"><strong>Durée :</strong> <span>{{duree}} minutes</span></p>
+      <p class="movie-detail__paragraphe"><strong>Catégorie :</strong> <span>{{categorie}}</span></p>
+      <p class="movie-detail__paragraphe"><strong>Âge requis :</strong> <span>{{age}}</span></p>
+    </div>
+  </div>
+
+  <div class="movie-detail__trailer">
+    <h3>Trailer</h3>
+    <iframe class="movie-detail__iframe" src="{{url}}" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
