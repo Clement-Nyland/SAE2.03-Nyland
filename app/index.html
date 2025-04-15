@@ -10,6 +10,7 @@
   <body>
 
     <header id="header"></header>
+    <section class="categorie"></section>
     <section class="infos" id="infos"></section>
     <section class="cards" id="content"></section>
 
@@ -20,6 +21,7 @@
       import { DataMovie } from "./data/dataMovie.js";
 
       import { Moviedetails } from "./component/Moviedetails/script.js";
+      import { MovieCategory } from "./component/Moviecategory/script.js";
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -37,6 +39,17 @@
         V.renderMoviedetails(movieData); // Affiche les détails du film
       };
 
+      C.getCategories = async function () {
+        let age = C.profile ? C.profile.min_age : 0; // Récupère l'âge du profil ou 0 par défaut
+        let categories = await DataMovie.requestMovies(age);
+        if (!Array.isArray(categories) || categories.length === 0) {
+          document.querySelector("#categories").innerHTML =
+            "<p>Aucune catégorie disponible pour votre tranche d'âge.</p>";
+          return;
+        }
+        V.renderMoviesCategory(categories); // Affiche les catégories
+      };
+
       C.start = async function () {
         V.renderNavBar("C.handlerAbout()");
         await V.renderNavBar("C.handlerMovies()");
@@ -51,6 +64,7 @@
           ]
         ]
         V.renderMovie(movies);
+        C.getCategories();
       };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -79,6 +93,25 @@
       V.renderMoviedetails = function (movieData) {
         let content = document.querySelector("#content");
         content.innerHTML = Moviedetails.format(movieData);
+      };
+
+      V.renderMoviesCategory = function (data) {
+        let content = document.querySelector("#content");
+        let formattedContent = "";
+        for (let category of data) {
+          formattedContent += MovieCategory.format(category);
+        }
+        content.innerHTML = formattedContent;
+      };
+
+      V.renderCategories = function (categories) {
+        let content = document.querySelector("#category");
+        let formattedContent = "<ul>";
+        for (let category of categories) {
+          formattedContent += `<li>${category.name}</li>`;
+        }
+        formattedContent += "</ul>";
+        content.innerHTML = formattedContent;
       };
 
       C.start(); // Démarre l'application

@@ -73,3 +73,9 @@ function addController(){
         return false;
     }
   }
+
+  function readMoviesByCategoryController() {
+    $age = isset($_REQUEST['age']) ? intval($_REQUEST['age']) : 0; // Récupère l'âge ou 0 par défaut
+    $categories = getMoviesByCategory($age); // Appelle la fonction du modèle avec l'âge
+    return $categories ? $categories : false;
+  }
